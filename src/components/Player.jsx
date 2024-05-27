@@ -21,7 +21,7 @@ export default function Player({ defaultName, symbol, isActive }) {
   }
 
   return (
-    <li className={isActive ? 'active' : undefined}>
+    <li className={isActive ? "active" : undefined}>
       <span className="player">
         {editPlayerName}
         <span className="player-symbol">{symbol}</span>
