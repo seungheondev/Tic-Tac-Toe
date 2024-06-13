@@ -2,17 +2,17 @@ const defaultGameBoard = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
-]; 
+];
 
 export default function GameBoard({ onSelectBox, turns }) {
   let gameBoard = defaultGameBoard;
 
-  for(const turn of turns) {
+  for (const turn of turns) {
     const { box, player } = turn;
     const { row, col } = box;
 
     gameBoard[row][col] = player;
-  }  
+  }
 
   // const [gameBoard, setGameBoard] = useState(defaultGameBoard);
 
@@ -34,7 +34,10 @@ export default function GameBoard({ onSelectBox, turns }) {
           <ol>
             {row.map((col, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => onSelectBox(rowIndex, colIndex)}>{col}</button>
+                <button
+                  onClick={() => onSelectBox(rowIndex, colIndex)}disabled>
+                  {col}
+                </button>
               </li>
             ))}
           </ol>
