@@ -37,9 +37,13 @@ function App() {
   const activePlayer = deriveActivePlayer(gameTurns);
 
   for (const combinations of WINNING_COMBINATIONS) {
-    const firstSymbol
-    const secondSymbol
-    const thirdSymbol
+    const firstSymbol = gameBoard[combinations[0].row][combinations[0].column];
+    const secondSymbol = gameBoard[combinations[1].row][combinations[1].column];
+    const thirdSymbol = gameBoard[combinations[2].row][combinations[2].column];
+
+    if (firstSymbol && firstSymbol === secondSymbol && firstSymbol === thirdSymbol) {
+      
+    }
   }
 
   function handleSelectBox(rowIndex, colIndex) {
