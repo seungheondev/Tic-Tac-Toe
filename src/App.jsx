@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Player from "./components/Player";
 import GameBoard from "./components/GameBoard";
+import GameOver from "./components/GameOver";
 import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./components/winning-combinations";
 
@@ -25,7 +26,7 @@ function App() {
   const [gameTurns, setGameTurns] = useState([]);
   // const [hasWinner, setHasWinner] = useState(false);
   // const [activePlayer, setActivePlayer] = useState("X");
-    let gameBoard = defaultGameBoard;
+    let gameBoard = [...defaultGameBoard.map(array => [...array])];
 
   for (const turn of gameTurns) {
     const { box, player } = turn;
@@ -36,15 +37,19 @@ function App() {
 
   const activePlayer = deriveActivePlayer(gameTurns);
 
+  let winner;
+
   for (const combinations of WINNING_COMBINATIONS) {
     const firstSymbol = gameBoard[combinations[0].row][combinations[0].column];
     const secondSymbol = gameBoard[combinations[1].row][combinations[1].column];
     const thirdSymbol = gameBoard[combinations[2].row][combinations[2].column];
 
     if (firstSymbol && firstSymbol === secondSymbol && firstSymbol === thirdSymbol) {
-      
+      winner = firstSymbol;
     }
   }
+
+  const hasDraw = gameTurns.length === 9 && !winner;
 
   function handleSelectBox(rowIndex, colIndex) {
     // setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
@@ -58,6 +63,10 @@ function App() {
 
       return updateTurns;
     });
+  }
+
+  function handleRematch() {
+    setGameTurns([]);
   }
 
   return (
@@ -75,6 +84,7 @@ function App() {
             isActive={activePlayer === "O"}
           />
         </ol>
+        {(winner || hasDraw) && <GameOver winner={winner} onRestart={handleRematch} />}
         <GameBoard
           onSelectBox={handleSelectBox}
           board={gameBoard}
