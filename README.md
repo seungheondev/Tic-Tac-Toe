@@ -1,5 +1,5 @@
 # 三目並べゲーム
-・useState
+・const [value, setValue] = useState(値)
 
 useStateは、関数コンポーネントのstateを保持したり、更新したりするためのフック
 
