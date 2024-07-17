@@ -16,7 +16,7 @@ REACTでは、制御する数は最小限にして各stateでできるだけ多�
 
 ![image](https://github.com/seungheondev/Tic-Tac-Toe/assets/170543088/5af6066c-6ee0-4849-829c-a1118ee6206e)
 
-ex) Appコンポーネントを正業するためvalueを追加して、それを内部で使うために最後に関数を呼ぶ。
+ex) Appコンポーネントを制御するためvalueを追加して、それを内部で使うために最後に関数を呼ぶ。
 
 ![image](https://github.com/seungheondev/Tic-Tac-Toe/assets/170543088/e76219e5-8062-4697-b2e8-61cd2e029115)
 
